@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Switch } from "@headlessui/react";
-import Select from "../select/Select";
+import Select from "../Select/Select";
 
 export default function Header(props) {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
