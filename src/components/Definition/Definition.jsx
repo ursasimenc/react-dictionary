@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 
 const Definition = (props) => {
 	const [word, setWord] = useState(props.data[0]);
@@ -35,10 +34,14 @@ const Definition = (props) => {
 					{amount > 1 && (
 						<div className="flex gap-2">
 							<button className="button" onClick={() => changeWord("prev")} title="Show previous word" disabled={shown === 1}>
-								<ChevronLeftIcon className="h-5 w-5" />
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+								</svg>
 							</button>
 							<button className="button" onClick={() => changeWord("next")} title="Show next word" disabled={shown === amount}>
-								<ChevronRightIcon className="h-5 w-5" />
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+								</svg>
 							</button>
 						</div>
 					)}

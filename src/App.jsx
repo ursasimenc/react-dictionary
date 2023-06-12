@@ -43,6 +43,7 @@ function App() {
 			<Header font={font} setFont={setFont} />
 			<main className={"bg-white dark:bg-gray_1 mb-8 flex flex-col items-center gap-14 selection:bg-darkPurple text-gray_3 dark:text-white font-" + font}>
 				<div className=" w-[80vw] max-w-[736px]">
+					<h1 className="hidden">Search</h1>
 					<div className="relative mt-2 rounded-md">
 						<input
 							type="text"
