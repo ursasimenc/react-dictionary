@@ -3,11 +3,11 @@ import { Switch } from "@headlessui/react";
 import Select from "../Select/Select";
 
 export default function Header(props) {
-	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 	const [enabled, setEnabled] = useState(false);
 
 	useEffect(() => {
 		const html = document.querySelector("html").classList.contains("dark");
+		console.log(html);
 
 		if (html) {
 			setEnabled(true);
