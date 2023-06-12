@@ -1,13 +1,14 @@
 import Header from "./components/Header/Header";
-import Definition from "./components/Definition/Definition";
-import Error from "./components/Error/Error";
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 
 function App() {
 	const [font, setFont] = useState("Sans");
 	const [data, setData] = useState();
 	const [res, setRes] = useState(null);
 	const [error, setError] = useState(false);
+
+	const Definition = lazy(() => import("./components/Definition/Definition"));
+	const Error = lazy(() => import("./components/Error/Error"));
 
 	async function getWord(e) {
 		const key = e;
@@ -74,8 +75,10 @@ function App() {
 					</div>
 					{error && <span className="text-red block mt-4">Whoops, can’t be empty…</span>}
 				</div>
-				{res && data && <Definition data={data} />}
-				{!res && data && <Error data={data} />}
+				<Suspense fallback={<div className="w-[80vw] max-w-[736px] h-[80vh] flex items-center justify-center">Loading...</div>}>
+					{res && data && <Definition data={data} />}
+					{!res && data && <Error data={data} />}
+				</Suspense>
 			</main>
 		</>
 	);
