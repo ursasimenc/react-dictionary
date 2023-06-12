@@ -22,10 +22,9 @@ export default function Header(props) {
 
 	return (
 		<header className="bg-white dark:bg-gray_1 ">
-			<nav className="mx-auto flex max-w-[736px] h-[102px] items-center justify-between p-6 lg:px-8" aria-label="Global">
+			<nav className="mx-auto flex w-[80vw] max-w-[736px] h-[102px] items-center justify-between" aria-label="Global">
 				<div className="flex lg:flex-1">
 					<a href="#" className="-m-1.5 p-1.5">
-						<span className="sr-only">Your Company</span>
 						<svg xmlns="http://www.w3.org/2000/svg" width="34" height="38" viewBox="0 0 34 38">
 							<g fill="none" fillRule="evenodd" stroke="#838383" strokeLinecap="round" strokeWidth="1.5">
 								<path d="M1 33V5a4 4 0 0 1 4-4h26.8A1.2 1.2 0 0 1 33 2.2v26.228M5 29h28M5 37h28" />

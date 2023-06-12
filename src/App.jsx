@@ -1,113 +1,12 @@
 import Header from "./components/Header/Header";
 import Definition from "./components/Definition/Definition";
+import Error from "./components/Error/Error";
 import { useEffect, useState } from "react";
 
 function App() {
-	// const mouse = [
-	// 	{
-	// 		word: "mouse",
-	// 		phonetics: [],
-	// 		meanings: [
-	// 			{
-	// 				partOfSpeech: "noun",
-	// 				definitions: [
-	// 					{
-	// 						definition: "Any small rodent of the genus Mus.",
-	// 						synonyms: [],
-	// 						antonyms: [],
-	// 					},
-	// 					{
-	// 						definition: "A member of the many small rodent and marsupial species resembling such a rodent.",
-	// 						synonyms: [],
-	// 						antonyms: [],
-	// 					},
-	// 					{
-	// 						definition: "A quiet or shy person.",
-	// 						synonyms: [],
-	// 						antonyms: [],
-	// 					},
-	// 					{
-	// 						definition: "(plural mice or, rarely, mouses) An input device that is moved over a pad or other flat surface to produce a corresponding movement of a pointer on a graphical display.",
-	// 						synonyms: [],
-	// 						antonyms: [],
-	// 					},
-	// 					{
-	// 						definition: "Hematoma.",
-	// 						synonyms: [],
-	// 						antonyms: [],
-	// 					},
-	// 					{
-	// 						definition: "A turn or lashing of spun yarn or small stuff, or a metallic clasp or fastening, uniting the point and shank of a hook to prevent its unhooking or straightening out.",
-	// 						synonyms: [],
-	// 						antonyms: [],
-	// 					},
-	// 					{
-	// 						definition: "A familiar term of endearment.",
-	// 						synonyms: [],
-	// 						antonyms: [],
-	// 					},
-	// 					{
-	// 						definition: "A match used in firing guns or blasting.",
-	// 						synonyms: [],
-	// 						antonyms: [],
-	// 					},
-	// 					{
-	// 						definition: "A small model of (a fragment of) Zermelo-Fraenkel set theory with desirable properties (depending on the context).",
-	// 						synonyms: [],
-	// 						antonyms: [],
-	// 					},
-	// 					{
-	// 						definition: "A small cushion for a woman's hair.",
-	// 						synonyms: [],
-	// 						antonyms: [],
-	// 					},
-	// 				],
-	// 				synonyms: [],
-	// 				antonyms: [],
-	// 			},
-	// 			{
-	// 				partOfSpeech: "verb",
-	// 				definitions: [
-	// 					{
-	// 						definition: "To move cautiously or furtively, in the manner of a mouse (the rodent) (frequently used in the phrasal verb to mouse around).",
-	// 						synonyms: [],
-	// 						antonyms: [],
-	// 					},
-	// 					{
-	// 						definition: "To hunt or catch mice (the rodents), usually of cats.",
-	// 						synonyms: [],
-	// 						antonyms: [],
-	// 					},
-	// 					{
-	// 						definition: "To close the mouth of a hook by a careful binding of marline or wire.",
-	// 						synonyms: [],
-	// 						antonyms: [],
-	// 						example: "Captain Higgins moused the hook with a bit of marline to prevent the block beckets from falling out under slack.",
-	// 					},
-	// 					{
-	// 						definition: "To navigate by means of a computer mouse.",
-	// 						synonyms: [],
-	// 						antonyms: [],
-	// 					},
-	// 					{
-	// 						definition: "To tear, as a cat devours a mouse.",
-	// 						synonyms: [],
-	// 						antonyms: [],
-	// 					},
-	// 				],
-	// 				synonyms: [],
-	// 				antonyms: [],
-	// 			},
-	// 		],
-	// 		license: {
-	// 			name: "CC BY-SA 3.0",
-	// 			url: "https://creativecommons.org/licenses/by-sa/3.0",
-	// 		},
-	// 		sourceUrls: ["https://en.wiktionary.org/wiki/mouse"],
-	// 	},
-	// ];
 	const [font, setFont] = useState("Sans");
 	const [data, setData] = useState();
+	const [res, setRes] = useState(null);
 
 	useEffect(() => {
 		const html = document.querySelector("html");
@@ -121,19 +20,33 @@ function App() {
 		const key = e;
 		if (key !== "Enter") return;
 
-		const word = document.getElementById("search").value;
+		const search = document.getElementById("search");
+		const word = search.value;
+
+		if (word === "") {
+			// search.setAttribute("invalid", "true");
+			return;
+		}
+
 		const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
 
 		const response = await fetch(url);
 		const data = await response.json();
-		setData(data);
+
+		if (data.title !== undefined) {
+			setData(data);
+			setRes(false);
+		} else {
+			setData(data);
+			setRes(true);
+		}
 	}
 
 	return (
 		<>
 			<Header font={font} setFont={setFont} />
-			<main className={"bg-white dark:bg-gray_1 flex flex-col items-center gap-14 font-" + font}>
-				<div className="w-full max-w-[736px]">
+			<main className={"bg-white dark:bg-gray_1 mb-8 flex flex-col items-center gap-14 selection:bg-darkPurple text-gray_3 dark:text-white font-" + font}>
+				<div className=" w-[80vw] max-w-[736px]">
 					<label htmlFor="price" className="sr-only">
 						search
 					</label>
@@ -142,7 +55,8 @@ function App() {
 							type="text"
 							name="search"
 							id="search"
-							className="w-full sm: h-[64px] px-6 rounded-sm border-0 bg-gray_9 dark:bg-gray_2 font-bold text-gray_3 dark:text-white  placeholder:text-gray_5 placeholder:font-normal focus:ring-2 focus:ring-inset focus:ring-purple "
+							className="w-full sm: h-[64px] px-6 rounded-2xl border-0 bg-gray_9 dark:bg-gray_2 font-bold text-gray_3 dark:text-white  placeholder:text-gray_5 placeholder:font-normal focus:ring-2 focus:ring-inset focus:ring-purple invalid:ring-red"
+							required
 							placeholder="Search for any word"
 							onKeyDown={(e) => getWord(e.key)}
 						/>
@@ -160,7 +74,8 @@ function App() {
 						</div>
 					</div>
 				</div>
-				{data && <Definition data={data} />}
+				{res && data && <Definition data={data} />}
+				{!res && data && <Error data={data} />}
 			</main>
 		</>
 	);

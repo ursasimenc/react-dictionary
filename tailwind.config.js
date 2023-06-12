@@ -20,21 +20,16 @@ export default {
 				gray_6: "#cecece",
 			},
 			fontSize: {
-				base: "0.875rem",
-				lg: "1.125rem",
-				xl: "1.25rem",
-				"2xl": "1.5rem",
-				"3xl": "4rem",
+				base: "0.875rem", // 14px
+				lg: "1.125rem", // 18px
+				xl: "1.25rem", // 20px
+				"2xl": "1.5rem", // 24px
+				"3xl": "4rem", // 64px
 			},
 			fontFamily: {
 				Sans: "Inter",
 				Serif: "Lora",
 				Monospace: "Inconsolata",
-			},
-			borderRadius: {
-				none: "0",
-				xs: "0.625rem",
-				sm: "1rem",
 			},
 		},
 	},
