@@ -71,6 +71,7 @@ function App() {
 					</div>
 					{error && <span className="text-red block mt-4">Whoops, can’t be empty…</span>}
 				</div>
+				{!error && !data && !res && <h1 className="text-4xl text-center opacity-0">Start by typing a word in search</h1>}
 				<Suspense fallback={<h1>Loading...</h1>}>
 					{res && data && <Definition data={data} />}
 					{!res && data && <Error data={data} />}
