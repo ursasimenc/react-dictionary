@@ -14,12 +14,12 @@ export default function Select(props) {
 					<Listbox.Label className="hidden">Font</Listbox.Label>
 					<div className="relative mt-1">
 						<Listbox.Button className="relative w-full cursor-pointer flex justify-center ">
-							<span className={`ml-3 flex gap-x-4 text-gray_3 dark:text-white items-center font-` + props.font}>
+							<div className={`ml-3 flex gap-x-4 text-gray_3 dark:text-white items-center font-` + props.font}>
 								<div className="font-bold">{props.font}</div>
 								<svg xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8">
 									<path fill="none" stroke="#A445ED" strokeWidth="1.5" d="m1 1 6 6 6-6" />
 								</svg>
-							</span>
+							</div>
 							<span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2"></span>
 						</Listbox.Button>
 

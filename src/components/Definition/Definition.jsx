@@ -31,7 +31,7 @@ const Definition = (props) => {
 		<div className="text-gray_3 dark:text-white w-[80vw] max-w-[736px]">
 			<div className="w-full flex flex-col">
 				<div className="flex justify-between items-center">
-					<span className="text-3xl font-bold">{word.word}</span>
+					<h1 className="text-3xl font-bold">{word.word}</h1>
 					{amount > 1 && (
 						<div className="flex gap-2">
 							<button className="button" onClick={() => changeWord("prev")} title="Show previous word" disabled={shown === 1}>
