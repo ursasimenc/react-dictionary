@@ -66,8 +66,10 @@ const Definition = (props) => {
 							<h3 className="text-xl text-gray_5 mt-8 mb-4">Meaning</h3>
 							<div>
 								{meaning.definitions.map((definition, index) => (
-									<div className="flex my-4 gap-x-5" key={index}>
-										<div className="w-[5px] h-[5px] bg-darkPurple rounded-full relative top-[7px]"></div>
+									<div className="flex my-4 gap-x-2" key={index}>
+										<div className="flex items-start">
+											<div className="w-[5px] h-[5px] rounded-full bg-darkPurple relative top-[8.5px]"></div>
+										</div>
 										<div className=" leading-[1.25rem] font-lg">
 											<span>{definition.definition}</span>
 
@@ -92,7 +94,7 @@ const Definition = (props) => {
 					</div>
 				))}
 			</div>
-			<div className="bg-gray_7 dark:bg-gray_4 w-full h-[1px] mt-8 mb-4"></div>
+			<div className="bg-gray_7 dark:bg-gray_4 w-full h-[1px] mt-10 mb-5"></div>
 			<div className="flex gap-4 text-base">
 				<h6 className="text-gray_5">Source</h6>
 				<a href={word.sourceUrls[0]} target="_blank" className="flex items-center gap-2">
