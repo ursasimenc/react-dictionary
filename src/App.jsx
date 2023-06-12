@@ -7,6 +7,7 @@ function App() {
 	const [font, setFont] = useState("Sans");
 	const [data, setData] = useState();
 	const [res, setRes] = useState(null);
+	const [error, setError] = useState(false);
 
 	async function getWord(e) {
 		const key = e;
@@ -15,16 +16,19 @@ function App() {
 		const search = document.getElementById("search");
 		const word = search.value;
 
-		if (word === "") {
+		if (word.length === 0) {
 			// search.setAttribute("invalid", "true");
+			setError(true);
+			setData(null);
+			setRes(null);
 			return;
 		}
 
 		const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
-
 		const response = await fetch(url);
 		const data = await response.json();
 
+		setError(false);
 		if (data.title !== undefined) {
 			setData(data);
 			setRes(false);
@@ -47,7 +51,10 @@ function App() {
 							type="text"
 							name="search"
 							id="search"
-							className="w-full sm: h-[64px] px-6 rounded-2xl border-0 bg-gray_9 dark:bg-gray_2 font-bold text-gray_3 dark:text-white  placeholder:text-gray_5 placeholder:font-normal focus:ring-2 focus:ring-inset focus:ring-purple invalid:ring-red"
+							className={
+								`w-full sm: h-[64px] px-6 rounded-2xl border-0 bg-gray_9 dark:bg-gray_2 font-bold text-gray_3 dark:text-white placeholder:text-gray_5 placeholder:font-normal  ` +
+								(error ? "ring-2 ring-red focus:ring-red" : "focus:ring-2 focus:ring-inset focus:ring-purple")
+							}
 							required
 							placeholder="Search for any word"
 							onKeyDown={(e) => getWord(e.key)}
@@ -65,6 +72,7 @@ function App() {
 							</svg>
 						</div>
 					</div>
+					{error && <span className="text-red block mt-4">Whoops, can’t be empty…</span>}
 				</div>
 				{res && data && <Definition data={data} />}
 				{!res && data && <Error data={data} />}
