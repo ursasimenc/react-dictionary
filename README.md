@@ -1,6 +1,6 @@
 # Frontend Mentor - Password generator app solution
 
-This is a solution to the [To Do app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW). I have made some adjustments to the design.
+This is a solution to the [Dictionary web app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/dictionary-web-app-h5wwnyuKFL).
 
 ## Table of contents
 
@@ -10,37 +10,38 @@ This is a solution to the [To Do app challenge on Frontend Mentor](https://www.f
 
 ## The challenge
 
-Users should be able to:
+Your users should be able to:
 
-- View the optimal layout for the app depending on their device's screen size
-- See hover states for all interactive elements on the page
-- Add new todos to the list
-- Mark todos as complete
-- Delete todos from the list
-- Filter by all/active/complete todos
-- Clear all completed todos
-- Toggle light and dark mode
+- Search for words using the input field
+- See the Free Dictionary API's response for the searched word
+- See a form validation message when trying to submit a blank form
+- Play the audio file for a word when it's available
+- Switch between serif, sans serif, and monospace fonts
+- Switch between light and dark themes
+- View the optimal layout for the interface depending on their device's screen size
+- See hover and focus states for all interactive elements on the page
+- **Bonus**: Have the correct color scheme chosen for them based on their computer preferences.
 
-The solution was built using Solid.js, TypeScript and Sass and uses localStorage to store the tasks in the browser.
+The solution was built using React, tailwindCSS, some tailwindUI components and the Free Dictionary API.
 
 ## Screenshots
 
 Screen:
 
-![Screen: Dark Mode](./src/assets/screenshots/desktop-dark.png)
-![Screen: Light Mode](./src/assets/screenshots/desktop-light.png)
+![Screen: Dark Mode](./src/assets/desktop-dark.png)
+![Screen: Light Mode](./src/assets/desktop-light.png)
 
 Tablet:
 
-![Tablet: Dark Mode](./src/assets/screenshots/tablet-dark.png)
-![Tablet: Light Mode](./src/assets/screenshots/tablet-light.png)
+![Tablet: Dark Mode](./src/assets/tablet-dark.png)
+![Tablet: Light Mode](./src/assets/tablet-light.png)
 
 Mobile:
 
-![Mobile: Dark Mode](./src/assets/screenshots/mobile-dark.png)
-![Mobile: Light Mode](./src/assets/screenshots/mobile-light.png)
+![Mobile: Dark Mode](./src/assets/mobile-dark.png)
+![Mobile: Light Mode](./src/assets/mobile-light.png)
 
 ## Links
 
 - [GitHub Repo](https://github.com/ursasimenc/Solid-ToDo)
-- [Demo](https://solid-todo-us.netlify.app)
+- [Demo](https://github.com/ursasimenc/react-dictionary)

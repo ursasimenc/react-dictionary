@@ -18,7 +18,6 @@ function App() {
 		const word = search.value;
 
 		if (word.length === 0) {
-			// search.setAttribute("invalid", "true");
 			setError(true);
 			setData(null);
 			setRes(null);
