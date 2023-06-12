@@ -71,7 +71,7 @@ function App() {
 					</div>
 					{error && <span className="text-red block mt-4">Whoops, can’t be empty…</span>}
 				</div>
-				<Suspense fallback={<h1 className="w-[80vw] max-w-[736px] h-[80vh] flex items-center justify-center">Loading...</h1>}>
+				<Suspense fallback={<h1>Loading...</h1>}>
 					{res && data && <Definition data={data} />}
 					{!res && data && <Error data={data} />}
 				</Suspense>
