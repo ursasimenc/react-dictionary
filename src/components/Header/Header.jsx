@@ -6,10 +6,10 @@ export default function Header(props) {
 	const [enabled, setEnabled] = useState(false);
 
 	useEffect(() => {
-		const html = document.querySelector("html").classList.contains("dark");
-		console.log(html);
-
-		if (html) {
+		const html = document.querySelector("html");
+		const darkTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+		if (darkTheme) {
+			html.classList.add("dark");
 			setEnabled(true);
 		}
 	}, []);

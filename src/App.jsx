@@ -1,20 +1,12 @@
 import Header from "./components/Header/Header";
 import Definition from "./components/Definition/Definition";
 import Error from "./components/Error/Error";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function App() {
 	const [font, setFont] = useState("Sans");
 	const [data, setData] = useState();
 	const [res, setRes] = useState(null);
-
-	useEffect(() => {
-		const html = document.querySelector("html");
-		const darkTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
-		if (darkTheme) {
-			html.classList.add("dark");
-		}
-	}, []);
 
 	async function getWord(e) {
 		const key = e;
