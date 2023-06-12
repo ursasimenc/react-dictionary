@@ -43,7 +43,6 @@ function App() {
 			<Header font={font} setFont={setFont} />
 			<main className={"bg-white dark:bg-gray_1 mb-8 flex flex-col items-center gap-14 selection:bg-darkPurple text-gray_3 dark:text-white font-" + font}>
 				<div className=" w-[80vw] max-w-[736px]">
-					<h1 className="hidden">Search</h1>
 					<div className="relative mt-2 rounded-md">
 						<input
 							type="text"
@@ -72,7 +71,7 @@ function App() {
 					</div>
 					{error && <span className="text-red block mt-4">Whoops, can’t be empty…</span>}
 				</div>
-				<Suspense fallback={<div className="w-[80vw] max-w-[736px] h-[80vh] flex items-center justify-center">Loading...</div>}>
+				<Suspense fallback={<h1 className="w-[80vw] max-w-[736px] h-[80vh] flex items-center justify-center">Loading...</h1>}>
 					{res && data && <Definition data={data} />}
 					{!res && data && <Error data={data} />}
 				</Suspense>
