@@ -44,4 +44,4 @@ Mobile:
 ## Links
 
 - [GitHub Repo](https://github.com/ursasimenc/Solid-ToDo)
-- [Demo](https://github.com/ursasimenc/react-dictionary)
+- [Demo](https://react-dictionary-us.netlify.app)
